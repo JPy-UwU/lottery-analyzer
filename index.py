@@ -2,14 +2,18 @@
 import pandas as pd
 df = pd.read_excel(r"data.xlsx", index_col=None, na_values=['NA'], usecols = "A")
 
-data = df.value_counts()
-print(data)
-
 # creating dictionary of dictionary
-dict = {}
+frequency_dict = {}
 
-for i in range(50):
-    dict[i] = 0
-    
+# initializing the dictionary
+for i in range(1, 51):
+  frequency_dict[i] = 0
 
-print(dict)
+# creating frequency dictionary
+for i in df.values:
+  frequency_dict[i.item()] += 1
+
+
+# printing the frequency dictionary
+for (key, value) in frequency_dict.items():
+  print(key, " : ", value)
